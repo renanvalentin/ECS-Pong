@@ -11,12 +11,14 @@ public class InputController : MonoBehaviour {
 
     private string horizontal;
     private string vertical;
+    private string jump;
 
     public void Awake () {
         _view = GetComponent<IView> ();
 
         horizontal = "Player" + (player - 1) + "Horizontal";
         vertical = "Player" + (player - 1) + "Vertical";
+        jump = "Player" + (player - 1) + "Jump";
     }
 
     public void Update () {
@@ -35,8 +37,8 @@ public class InputController : MonoBehaviour {
         //     CreateInputEntity (gameEntity, InputButton.Down);
         // }
 
-        if (Input.GetButton ("Space")) {
-
+        if (Input.GetButton (jump)) {
+            CreateInputEntity (gameEntity, InputButton.Fire);
         }
 
         CreateInputAxis (gameEntity);

@@ -24,6 +24,7 @@ public sealed class GameSystems : Feature {
 
         // On Collision
         Add (new BounceCollisionSystem (contexts));
+        Add (new ReflectBallSystem (contexts));
 
         // Apply position
         Add (new PositionSystem (contexts));
@@ -37,6 +38,7 @@ public sealed class GameSystems : Feature {
 
         // Cleanup
         Add (new ColliderCleanupSystem (contexts));
+        Add (new InputCleanupSystem (contexts));
         Add (new CollisionCleanupSystem (contexts));
         Add (new DestroyEntitySystem (contexts));
     }
