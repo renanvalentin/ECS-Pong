@@ -41,4 +41,16 @@ public class Rigidbody2DView : View, IRigidbody {
 
         return _rigidbody2D.Cast (direction, contactFilter2D, buffer, distance);
     }
+
+#if UNITY_EDITOR
+    private void OnDrawGizmos () {
+        GameEntity entity = (GameEntity) this.GetEntity ();
+
+        if (entity != null && entity.hasRaycastRadius) {
+            Gizmos.DrawWireSphere (entity.position.value, entity.raycastRadius.radius);
+        }
+    }
+
+#endif
+
 }

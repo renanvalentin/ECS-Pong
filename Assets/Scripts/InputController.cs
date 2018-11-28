@@ -35,6 +35,10 @@ public class InputController : MonoBehaviour {
         //     CreateInputEntity (gameEntity, InputButton.Down);
         // }
 
+        if (Input.GetButton ("Space")) {
+
+        }
+
         CreateInputAxis (gameEntity);
     }
 

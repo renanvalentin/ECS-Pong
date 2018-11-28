@@ -15,6 +15,7 @@ public sealed class GameSystems : Feature {
 
         // Raycast & Collision emit
         Add (new EmitRaycastSystem (contexts));
+        Add (new EmitSphereRaycastSystem (contexts));
         Add (new EmitCollisionSystem (contexts));
 
         // Resolve collisions

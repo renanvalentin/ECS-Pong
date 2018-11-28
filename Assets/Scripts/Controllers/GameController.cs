@@ -59,7 +59,7 @@ public class GameController : MonoBehaviour {
         Debug.Log (worldHeight - playableArea);
 
         CreatePlayer (new Vector2 (0, 0), new Vector2 (0, 0), new Vector2 (worldWidth, playableArea), "player_1");
-        CreatePlayer (new Vector2 (0, worldHeight), new Vector2 (0, worldHeight - playableArea), new Vector2 (worldWidth, worldHeight), "player_2");
+        // CreatePlayer (new Vector2 (0, worldHeight), new Vector2 (0, worldHeight - playableArea), new Vector2 (worldWidth, worldHeight), "player_2");
 
     }
 
@@ -71,6 +71,8 @@ public class GameController : MonoBehaviour {
         e.AddBound (minBound, maxBound);
         e.AddAsset (id);
         e.AddPlayer (id);
+        e.AddCollisionLayer ("Player");
+        e.AddRaycastRadius (2);
         e.isWorldClamp = true;
     }
 

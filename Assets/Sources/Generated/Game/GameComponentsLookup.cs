@@ -14,25 +14,27 @@ public static class GameComponentsLookup {
     public const int Bounce = 3;
     public const int Bound = 4;
     public const int Collider = 5;
-    public const int ConstantVelocity = 6;
-    public const int Destroyed = 7;
-    public const int DestroyedListener = 8;
-    public const int Direction = 9;
-    public const int HorizontalRaycastCollision = 10;
-    public const int Player = 11;
-    public const int PlayerScreenPosition = 12;
-    public const int Position = 13;
-    public const int PositionListener = 14;
-    public const int RaycastCollision = 15;
-    public const int RigidBody = 16;
-    public const int ScreenBoundCollision = 17;
-    public const int ShellRadius = 18;
-    public const int Speed = 19;
-    public const int Velocity = 20;
-    public const int VerticalRaycastCollision = 21;
-    public const int WorldClamp = 22;
+    public const int CollisionLayer = 6;
+    public const int ConstantVelocity = 7;
+    public const int Destroyed = 8;
+    public const int DestroyedListener = 9;
+    public const int Direction = 10;
+    public const int HorizontalRaycastCollision = 11;
+    public const int Player = 12;
+    public const int PlayerScreenPosition = 13;
+    public const int Position = 14;
+    public const int PositionListener = 15;
+    public const int RaycastCollision = 16;
+    public const int RaycastRadius = 17;
+    public const int RigidBody = 18;
+    public const int ScreenBoundCollision = 19;
+    public const int ShellRadius = 20;
+    public const int Speed = 21;
+    public const int Velocity = 22;
+    public const int VerticalRaycastCollision = 23;
+    public const int WorldClamp = 24;
 
-    public const int TotalComponents = 23;
+    public const int TotalComponents = 25;
 
     public static readonly string[] componentNames = {
         "Acceleration",
@@ -41,6 +43,7 @@ public static class GameComponentsLookup {
         "Bounce",
         "Bound",
         "Collider",
+        "CollisionLayer",
         "ConstantVelocity",
         "Destroyed",
         "DestroyedListener",
@@ -51,6 +54,7 @@ public static class GameComponentsLookup {
         "Position",
         "PositionListener",
         "RaycastCollision",
+        "RaycastRadius",
         "RigidBody",
         "ScreenBoundCollision",
         "ShellRadius",
@@ -67,6 +71,7 @@ public static class GameComponentsLookup {
         typeof(BounceComponent),
         typeof(BoundComponent),
         typeof(ColliderComponent),
+        typeof(CollisionLayerComponent),
         typeof(ConstantVelocityComponent),
         typeof(DestroyedComponent),
         typeof(DestroyedListenerComponent),
@@ -77,6 +82,7 @@ public static class GameComponentsLookup {
         typeof(PositionComponent),
         typeof(PositionListenerComponent),
         typeof(RaycastCollisionComponent),
+        typeof(RaycastRadiusComponent),
         typeof(RigidBodyComponent),
         typeof(ScreenBoundCollisionComponent),
         typeof(ShellRadiusComponent),
