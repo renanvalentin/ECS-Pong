@@ -38,7 +38,7 @@ public sealed class BounceCollisionSystem : ReactiveSystem<GameEntity>, ICleanup
 
     public void Cleanup () {
         foreach (var e in _rayCasts.GetEntities ()) {
-            e.RemoveCollider ();
+            // e.RemoveCollider ();
         }
     }
 }

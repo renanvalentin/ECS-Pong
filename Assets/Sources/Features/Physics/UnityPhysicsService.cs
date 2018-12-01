@@ -19,6 +19,10 @@ public class UnityPhysicsService : IPhysics {
     }
 
     public int SphereCast (Vector2 position, float radius, RaycastHit2D[] buffer, int layerMask) {
-        return Physics2D.CircleCastNonAlloc(position, radius, Vector2.down, buffer, radius, layerMask);
+        return Physics2D.CircleCastNonAlloc (position, radius, Vector2.down, buffer, radius, layerMask);
+    }
+
+    public int OverlapCircle (Vector2 position, float radius, Collider2D[] buffer, int layerMask) {
+        return Physics2D.OverlapCircleNonAlloc (position, radius, buffer, layerMask);
     }
 }

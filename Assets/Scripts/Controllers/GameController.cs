@@ -58,12 +58,12 @@ public class GameController : MonoBehaviour {
         Debug.Log (playableArea);
         Debug.Log (worldHeight - playableArea);
 
-        CreatePlayer (new Vector2 (0, 0), new Vector2 (0, 0), new Vector2 (worldWidth, playableArea), "player_1");
-        // CreatePlayer (new Vector2 (0, worldHeight), new Vector2 (0, worldHeight - playableArea), new Vector2 (worldWidth, worldHeight), "player_2");
+        CreatePlayer (new Vector2 (0, 0), 90, new Vector2 (0, 0), new Vector2 (worldWidth, playableArea), "player_1");
+        CreatePlayer (new Vector2 (0, worldHeight - 1), -90, new Vector2 (0, worldHeight - playableArea), new Vector2 (worldWidth, worldHeight), "player_2");
 
     }
 
-    private void CreatePlayer (Vector2 position, Vector2 minBound, Vector2 maxBound, string id) {
+    private void CreatePlayer (Vector2 position, float direction, Vector2 minBound, Vector2 maxBound, string id) {
         GameEntity e = _contexts.game.CreateEntity ();
         e.AddPosition (position);
         e.AddVelocity (Vector2.zero);
@@ -72,7 +72,10 @@ public class GameController : MonoBehaviour {
         e.AddAsset (id);
         e.AddPlayer (id);
         e.AddCollisionLayer ("Player");
-        e.AddRaycastRadius (2);
+        e.AddDirection (direction);
+        e.AddRaycastRadius (2.5f);
+        e.AddFieldOfView (160f, 2.5f);
+        e.AddAngle (160);
         e.isWorldClamp = true;
     }
 
@@ -83,9 +86,11 @@ public class GameController : MonoBehaviour {
         entity.AddShellRadius (0.01f);
         entity.isWorldClamp = true;
         entity.isBounce = true;
+        entity.isBall = true;
 
         entity.AddVelocity (new Vector2 (Random.Range (-2, 2), Random.Range (-2, 2)));
         entity.AddConstantVelocity (ballVelocity);
+        entity.AddAcceleration (Vector2.zero);
         return entity;
     }
 

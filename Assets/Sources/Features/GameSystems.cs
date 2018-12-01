@@ -15,7 +15,7 @@ public sealed class GameSystems : Feature {
 
         // Raycast & Collision emit
         Add (new EmitRaycastSystem (contexts));
-        Add (new EmitSphereRaycastSystem (contexts));
+        Add (new EmitOverlapCircleSystem (contexts));
         Add (new EmitCollisionSystem (contexts));
 
         // Resolve collisions
@@ -23,7 +23,7 @@ public sealed class GameSystems : Feature {
         Add (new VerticalMinimumTranslationSystem (contexts));
 
         // On Collision
-        Add (new BounceCollisionSystem (contexts));
+        // Add (new BounceCollisionSystem (contexts));
         Add (new ReflectBallSystem (contexts));
 
         // Apply position
@@ -38,6 +38,7 @@ public sealed class GameSystems : Feature {
 
         // Cleanup
         Add (new ColliderCleanupSystem (contexts));
+        Add (new OverlapCircleCleanupSystem (contexts));
         Add (new InputCleanupSystem (contexts));
         Add (new CollisionCleanupSystem (contexts));
         Add (new DestroyEntitySystem (contexts));

@@ -22,23 +22,34 @@ public sealed class ReflectBallSystem : ReactiveSystem<InputEntity> {
             var ownerId = entity.inputOwner.playerId;
             var paddle = _contexts.game.GetEntityWithPlayer (ownerId);
 
-            if (!paddle.hasRaycastCollision) {
+            if (!paddle.hasOverlapCircleCollision) {
                 continue;
             }
 
-            GameEntity other = (GameEntity) paddle.raycastCollision.other;
+            GameEntity other = (GameEntity) paddle.overlapCircleCollision.other;
+
             Vector2 otherPosition = other.position.value;
 
             Vector2 velocity = other.velocity.value;
             float speed = velocity.magnitude;
 
-            Vector2 positon = other.position.value;
+            Vector2 ballPositon = other.position.value;
+            Vector2 dirToTarget = (ballPositon - paddle.position.value).normalized;
 
-            Vector2 nextVelocity = Vector2.Reflect ((paddle.raycastCollision.point - positon).normalized, paddle.raycastCollision.normal);
+            // Vector2 direction = new Vector3 (Mathf.Sin (paddle.direction.value * Mathf.Deg2Rad), Mathf.Cos (paddle.direction.value * Mathf.Deg2Rad), 0);
+            Vector2 direction = paddle.direction.value > 0 ? Vector2.up : Vector2.down;
 
-            // entity.ReplaceVelocity (nextVelocity * speed);
-            other.ReplaceVelocity (nextVelocity * speed);
+            float angle = Vector2.Angle (direction, dirToTarget);
 
+            if (angle < paddle.fieldOfView.angle / 2) {
+                Debug.Log ("angle: " + angle);
+
+                Vector2 reflectDir = otherPosition - paddle.position.value;
+                Vector2 normal = new Vector2 (-reflectDir.y, reflectDir.x).normalized;
+
+                Vector2 nextVelocity = Vector2.Reflect (reflectDir.normalized, normal);
+                other.ReplaceVelocity (nextVelocity * speed);
+            }
         }
     }
 }

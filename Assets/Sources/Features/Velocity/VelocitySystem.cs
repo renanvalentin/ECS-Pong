@@ -15,14 +15,7 @@ public sealed class VelocitySystem : IExecuteSystem {
 
     public void Execute () {
         foreach (var entity in _group.GetEntities ()) {
-            if (_meta.deltaTime.value == 0) {
-                Debug.LogFormat ("delta: {0}", _meta.deltaTime.value);
-                continue;
-            }
-
-            // float speed = entity.velocity.value.magnitude;
-            Vector2 frameVelocity = entity.velocity.value * entity.speed.value * _meta.deltaTime.value;
-            //            entity.ReplacePosition(entity.position.value + nextVelocity);
+            Vector2 frameVelocity = (entity.velocity.value + entity.acceleration.value) * entity.speed.value * _meta.deltaTime.value;
 
             entity.ReplaceVelocity (frameVelocity);
         }

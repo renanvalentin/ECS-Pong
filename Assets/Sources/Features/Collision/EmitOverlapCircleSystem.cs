@@ -2,16 +2,16 @@ using System.Collections.Generic;
 using Entitas;
 using UnityEngine;
 
-public sealed class EmitSphereRaycastSystem : IExecuteSystem {
+public sealed class EmitOverlapCircleSystem : IExecuteSystem {
     private readonly MetaContext _meta;
 
     private IGroup<GameEntity> _group;
 
     private IPhysics _physicsService;
 
-    private readonly RaycastHit2D[] _buffer = new RaycastHit2D[16];
+    private readonly Collider2D[] _buffer = new Collider2D[16];
 
-    public EmitSphereRaycastSystem (Contexts contexts) {
+    public EmitOverlapCircleSystem (Contexts contexts) {
         _group = contexts.game.GetGroup (GameMatcher.RaycastRadius);
         _physicsService = contexts.meta.physicsService.instance;
     }
@@ -21,15 +21,14 @@ public sealed class EmitSphereRaycastSystem : IExecuteSystem {
             int layerMask = 1 << LayerMask.NameToLayer (entity.collisionLayer.name);
             layerMask = ~layerMask;
 
-            int hitCount = _physicsService.SphereCast (entity.position.value, entity.raycastRadius.radius, _buffer, layerMask);
+            int hitCount = _physicsService.OverlapCircle (entity.position.value, entity.raycastRadius.radius, _buffer, layerMask);
 
             for (int i = 0; i < hitCount; i++) {
-                RaycastHit2D hit = _buffer[i];
-                Collider2D collider = hit.collider;
+                Collider2D collider = _buffer[i];
 
                 IEntity other = collider.GetComponent<IView> ().GetEntity ();
 
-                entity.ReplaceRaycastCollision (other, entity.raycastRadius.radius, hit.distance, hit.point, hit.normal);
+                entity.ReplaceOverlapCircleCollision (other, entity.raycastRadius.radius);
             }
         }
     }

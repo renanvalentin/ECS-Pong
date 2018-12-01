@@ -48,9 +48,24 @@ public class Rigidbody2DView : View, IRigidbody {
 
         if (entity != null && entity.hasRaycastRadius) {
             Gizmos.DrawWireSphere (entity.position.value, entity.raycastRadius.radius);
+
+            Gizmos.DrawWireSphere (entity.position.value, entity.raycastRadius.radius);
+            Vector2 viewAngleA = DirFromAngle (-entity.angle.value / 2, false);
+            Vector2 viewAngleB = DirFromAngle (entity.angle.value / 2, false);
+
+            float direction = Mathf.Sign (entity.direction.value);
+
+            Gizmos.DrawLine (entity.position.value, entity.position.value + viewAngleA * entity.raycastRadius.radius * direction);
+            Gizmos.DrawLine (entity.position.value, entity.position.value + viewAngleB * entity.raycastRadius.radius * direction);
         }
     }
 
+    public Vector3 DirFromAngle (float angleInDegrees, bool angleIsGlobal) {
+        if (!angleIsGlobal) {
+            angleInDegrees += transform.eulerAngles.y;
+        }
+        return new Vector3 (Mathf.Sin (angleInDegrees * Mathf.Deg2Rad), Mathf.Cos (angleInDegrees * Mathf.Deg2Rad), 0);
+    }
 #endif
 
 }

@@ -9,37 +9,46 @@
 public static class GameComponentsLookup {
 
     public const int Acceleration = 0;
-    public const int Asset = 1;
-    public const int AssetListener = 2;
-    public const int Bounce = 3;
-    public const int Bound = 4;
-    public const int Collider = 5;
-    public const int CollisionLayer = 6;
-    public const int ConstantVelocity = 7;
-    public const int Destroyed = 8;
-    public const int DestroyedListener = 9;
-    public const int Direction = 10;
-    public const int HorizontalRaycastCollision = 11;
-    public const int Player = 12;
-    public const int PlayerScreenPosition = 13;
-    public const int Position = 14;
-    public const int PositionListener = 15;
-    public const int RaycastCollision = 16;
-    public const int RaycastRadius = 17;
-    public const int RigidBody = 18;
-    public const int ScreenBoundCollision = 19;
-    public const int ShellRadius = 20;
-    public const int Speed = 21;
-    public const int Velocity = 22;
-    public const int VerticalRaycastCollision = 23;
-    public const int WorldClamp = 24;
+    public const int Angle = 1;
+    public const int Asset = 2;
+    public const int AssetListener = 3;
+    public const int Ball = 4;
+    public const int Bounce = 5;
+    public const int Bound = 6;
+    public const int Collider = 7;
+    public const int CollisionLayer = 8;
+    public const int ConstantVelocity = 9;
+    public const int Destroyed = 10;
+    public const int DestroyedListener = 11;
+    public const int Direction = 12;
+    public const int DirectionListener = 13;
+    public const int FieldOfView = 14;
+    public const int HorizontalRaycastCollision = 15;
+    public const int OverlapCircleCollision = 16;
+    public const int Player = 17;
+    public const int PlayerScreenPosition = 18;
+    public const int Position = 19;
+    public const int PositionListener = 20;
+    public const int Radius = 21;
+    public const int RaycastCollision = 22;
+    public const int Raycast = 23;
+    public const int RaycastRadius = 24;
+    public const int RigidBody = 25;
+    public const int ScreenBoundCollision = 26;
+    public const int ShellRadius = 27;
+    public const int Speed = 28;
+    public const int Velocity = 29;
+    public const int VerticalRaycastCollision = 30;
+    public const int WorldClamp = 31;
 
-    public const int TotalComponents = 25;
+    public const int TotalComponents = 32;
 
     public static readonly string[] componentNames = {
         "Acceleration",
+        "Angle",
         "Asset",
         "AssetListener",
+        "Ball",
         "Bounce",
         "Bound",
         "Collider",
@@ -48,12 +57,17 @@ public static class GameComponentsLookup {
         "Destroyed",
         "DestroyedListener",
         "Direction",
+        "DirectionListener",
+        "FieldOfView",
         "HorizontalRaycastCollision",
+        "OverlapCircleCollision",
         "Player",
         "PlayerScreenPosition",
         "Position",
         "PositionListener",
+        "Radius",
         "RaycastCollision",
+        "Raycast",
         "RaycastRadius",
         "RigidBody",
         "ScreenBoundCollision",
@@ -66,8 +80,10 @@ public static class GameComponentsLookup {
 
     public static readonly System.Type[] componentTypes = {
         typeof(AccelerationComponent),
+        typeof(AngleComponent),
         typeof(AssetComponent),
         typeof(AssetListenerComponent),
+        typeof(BallComponent),
         typeof(BounceComponent),
         typeof(BoundComponent),
         typeof(ColliderComponent),
@@ -76,12 +92,17 @@ public static class GameComponentsLookup {
         typeof(DestroyedComponent),
         typeof(DestroyedListenerComponent),
         typeof(DirectionComponent),
+        typeof(DirectionListenerComponent),
+        typeof(FieldOfViewComponent),
         typeof(HorizontalRaycastCollisionComponent),
+        typeof(OverlapCircleCollisionComponent),
         typeof(PlayerComponent),
         typeof(PlayerScreenPositionComponent),
         typeof(PositionComponent),
         typeof(PositionListenerComponent),
+        typeof(RadiusComponent),
         typeof(RaycastCollisionComponent),
+        typeof(RaycastComponent),
         typeof(RaycastRadiusComponent),
         typeof(RigidBodyComponent),
         typeof(ScreenBoundCollisionComponent),

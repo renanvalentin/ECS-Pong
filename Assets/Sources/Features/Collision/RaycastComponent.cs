@@ -3,7 +3,4 @@ using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
 [Game]
-public class DirectionComponent : IComponent
-{
-    public Vector2 value;
-}
+public class RaycastComponent : IComponent { }
