@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour {
 
     public Vector2 ballVelocity = new Vector2 (.1f, 0f);
     public Vector2 ballVelocity2 = new Vector2 (-1.1f, 0f);
+    public Vector2 amplitude = new Vector2 (.5f, .5f);
+    public float radius = .5f;
     public int speed = 10;
 
     public int amount = 30;
@@ -62,7 +64,8 @@ public class GameController : MonoBehaviour {
         CreatePlayer (new Vector2 (0, worldHeight - 1), -90, new Vector2 (0, worldHeight - playableArea), new Vector2 (worldWidth, worldHeight), "player_2");
 
     }
-
+    public float a;
+    public float f;
     private void CreatePlayer (Vector2 position, float direction, Vector2 minBound, Vector2 maxBound, string id) {
         GameEntity e = _contexts.game.CreateEntity ();
         e.AddPosition (position);
@@ -81,8 +84,12 @@ public class GameController : MonoBehaviour {
 
     private GameEntity CreateEntity (int i) {
         GameEntity entity = _contexts.game.CreateEntity ();
-        entity.AddPosition (new Vector2 (i + 2, i + 2));
-        entity.AddSpeed (Random.Range (1, speed));
+        entity.AddPosition (new Vector2 (i, i));
+        entity.AddSpeed (Random.Range (2, speed));
+        entity.AddRadius (0);
+        entity.AddAngle (0);
+        entity.AddOscillation (f, a, 0);
+
         entity.AddShellRadius (0.01f);
         entity.isWorldClamp = true;
         entity.isBounce = true;

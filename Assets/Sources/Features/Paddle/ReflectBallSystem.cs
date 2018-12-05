@@ -42,13 +42,13 @@ public sealed class ReflectBallSystem : ReactiveSystem<InputEntity> {
             float angle = Vector2.Angle (direction, dirToTarget);
 
             if (angle < paddle.fieldOfView.angle / 2) {
-                Debug.Log ("angle: " + angle);
-
                 Vector2 reflectDir = otherPosition - paddle.position.value;
                 Vector2 normal = new Vector2 (-reflectDir.y, reflectDir.x).normalized;
 
                 Vector2 nextVelocity = Vector2.Reflect (reflectDir.normalized, normal);
                 other.ReplaceVelocity (nextVelocity * speed);
+
+                other.ReplaceOscillation (speed, angle, other.oscillation.time);
             }
         }
     }

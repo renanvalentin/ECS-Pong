@@ -11,6 +11,7 @@ public sealed class GameSystems : Feature {
 
         // Velocity
         Add (new ConstantVelocity (contexts));
+        Add (new OscillationSystem (contexts));
         Add (new VelocitySystem (contexts));
 
         // Raycast & Collision emit
