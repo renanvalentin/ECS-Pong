@@ -57,9 +57,6 @@ public class GameController : MonoBehaviour {
 
         float playableArea = worldHeight / 3;
 
-        Debug.Log (playableArea);
-        Debug.Log (worldHeight - playableArea);
-
         CreatePlayer (new Vector2 (0, 0), 90, new Vector2 (0, 0), new Vector2 (worldWidth, playableArea), "player_1");
         CreatePlayer (new Vector2 (0, worldHeight - 1), -90, new Vector2 (0, worldHeight - playableArea), new Vector2 (worldWidth, worldHeight), "player_2");
 
@@ -83,12 +80,14 @@ public class GameController : MonoBehaviour {
     }
 
     private GameEntity CreateEntity (int i) {
+        float s = Random.Range (3, speed) + 1;
         GameEntity entity = _contexts.game.CreateEntity ();
         entity.AddPosition (new Vector2 (i, i));
-        entity.AddSpeed (Random.Range (2, speed));
+        entity.AddSpeed (s);
         entity.AddRadius (0);
         entity.AddAngle (0);
         entity.AddOscillation (f, a, 0);
+        entity.AddMaxSpeed (s * 0.5f);
 
         entity.AddShellRadius (0.01f);
         entity.isWorldClamp = true;

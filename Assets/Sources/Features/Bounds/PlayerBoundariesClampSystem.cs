@@ -24,7 +24,6 @@ public sealed class PlayerBoundariesClampSystem : ReactiveSystem<GameEntity> {
             } else if (!(position.y >= minBound.y && position.y <= maxBound.y)) {
 
                 position.y = Mathf.Clamp (position.y, minBound.y, maxBound.y);
-                Debug.Log ("pos y:" + position.y);
             }
 
             entity.ReplacePosition (position);

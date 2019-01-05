@@ -24,25 +24,26 @@ public static class GameComponentsLookup {
     public const int DirectionListener = 13;
     public const int FieldOfView = 14;
     public const int HorizontalRaycastCollision = 15;
-    public const int Oscillation = 16;
-    public const int OverlapCircleCollision = 17;
-    public const int Player = 18;
-    public const int PlayerScreenPosition = 19;
-    public const int Position = 20;
-    public const int PositionListener = 21;
-    public const int Radius = 22;
-    public const int RaycastCollision = 23;
-    public const int Raycast = 24;
-    public const int RaycastRadius = 25;
-    public const int RigidBody = 26;
-    public const int ScreenBoundCollision = 27;
-    public const int ShellRadius = 28;
-    public const int Speed = 29;
-    public const int Velocity = 30;
-    public const int VerticalRaycastCollision = 31;
-    public const int WorldClamp = 32;
+    public const int MaxSpeed = 16;
+    public const int Oscillation = 17;
+    public const int OverlapCircleCollision = 18;
+    public const int Player = 19;
+    public const int PlayerScreenPosition = 20;
+    public const int Position = 21;
+    public const int PositionListener = 22;
+    public const int Radius = 23;
+    public const int RaycastCollision = 24;
+    public const int Raycast = 25;
+    public const int RaycastRadius = 26;
+    public const int RigidBody = 27;
+    public const int ScreenBoundCollision = 28;
+    public const int ShellRadius = 29;
+    public const int Speed = 30;
+    public const int Velocity = 31;
+    public const int VerticalRaycastCollision = 32;
+    public const int WorldClamp = 33;
 
-    public const int TotalComponents = 33;
+    public const int TotalComponents = 34;
 
     public static readonly string[] componentNames = {
         "Acceleration",
@@ -61,6 +62,7 @@ public static class GameComponentsLookup {
         "DirectionListener",
         "FieldOfView",
         "HorizontalRaycastCollision",
+        "MaxSpeed",
         "Oscillation",
         "OverlapCircleCollision",
         "Player",
@@ -97,6 +99,7 @@ public static class GameComponentsLookup {
         typeof(DirectionListenerComponent),
         typeof(FieldOfViewComponent),
         typeof(HorizontalRaycastCollisionComponent),
+        typeof(MaxSpeedComponent),
         typeof(Oscillation),
         typeof(OverlapCircleCollisionComponent),
         typeof(PlayerComponent),

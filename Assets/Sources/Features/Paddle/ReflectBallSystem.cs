@@ -14,7 +14,7 @@ public sealed class ReflectBallSystem : ReactiveSystem<InputEntity> {
     }
 
     protected override bool Filter (InputEntity entity) {
-        return entity.hasInput;
+        return entity.hasInput && entity.input.value == InputButton.Fire;
     }
 
     protected override void Execute (List<InputEntity> entities) {
@@ -22,7 +22,7 @@ public sealed class ReflectBallSystem : ReactiveSystem<InputEntity> {
             var ownerId = entity.inputOwner.playerId;
             var paddle = _contexts.game.GetEntityWithPlayer (ownerId);
 
-            if (!paddle.hasOverlapCircleCollision) {
+            if (!paddle.hasOverlapCircleCollision || entity.input.value != InputButton.Fire) {
                 continue;
             }
 
@@ -42,13 +42,27 @@ public sealed class ReflectBallSystem : ReactiveSystem<InputEntity> {
             float angle = Vector2.Angle (direction, dirToTarget);
 
             if (angle < paddle.fieldOfView.angle / 2) {
+                float radius = paddle.overlapCircleCollision.radius;
                 Vector2 reflectDir = otherPosition - paddle.position.value;
                 Vector2 normal = new Vector2 (-reflectDir.y, reflectDir.x).normalized;
+                float distance = reflectDir.magnitude;
 
-                Vector2 nextVelocity = Vector2.Reflect (reflectDir.normalized, normal);
-                other.ReplaceVelocity (nextVelocity * speed);
+                Vector2 nextVelocity = Vector2.Reflect (reflectDir.normalized, normal) * speed;
+                other.ReplaceVelocity (nextVelocity);
 
                 other.ReplaceOscillation (speed, angle, other.oscillation.time);
+
+                float hitDistance = paddle.overlapCircleCollision.radius - distance;
+                float maxspeed = other.maxSpeed.value;
+                float currentspeed = other.speed.value;
+
+                float nextSpeed = Mathf.Sin (((radius - distance) / radius) * (Mathf.PI / 2)) * maxspeed;
+
+                float minSpeed = maxspeed * 0.25f;
+
+                nextSpeed = Mathf.Clamp (nextSpeed * maxspeed, minSpeed, maxspeed * maxspeed);
+
+                other.ReplaceSpeed (nextSpeed);
             }
         }
     }

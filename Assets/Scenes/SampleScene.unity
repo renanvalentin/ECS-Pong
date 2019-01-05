@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947fbd1b440ee45068594f5b361296f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  worldWidth: 5
+  worldWidth: 7
   worldHeight: 10
   ballVelocity: {x: 1, y: 3}
   ballVelocity2: {x: 0, y: 0}

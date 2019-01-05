@@ -3,6 +3,6 @@ using Entitas.CodeGeneration.Attributes;
 using UnityEngine;
 
 [Game]
-public class SpeedComponent : IComponent {
+public class MaxSpeedComponent : IComponent {
     public float value;
 }
