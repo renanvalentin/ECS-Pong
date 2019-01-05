@@ -37,7 +37,7 @@ public class InputController : MonoBehaviour {
         //     CreateInputEntity (gameEntity, InputButton.Down);
         // }
 
-        if (Input.GetButton (jump)) {
+        if (Input.GetButtonDown (jump)) {
             CreateInputEntity (gameEntity, InputButton.Fire);
         }
 
